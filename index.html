@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VisuCreate — Design que converte</title>
+  <meta name="description" content="VisuCreate: artes profissionais, identidade visual e social media. Seja nosso afiliado e ganhe comissões indicando nossos serviços." />
+  <meta name="theme-color" content="#8b5cf6" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="VisuCreate — Design que converte" />
+  <meta property="og:description" content="Portfólio + programa de afiliados. Criações que chamam clique e geram resultado." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=1200&auto=format&fit=crop" />
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --card:#14141b;
+      --text:#eef0f6;
+      --muted:#a7a9b4;
+      --brand:#8b5cf6; /* roxo VisuCreate */
+      --brand-2:#6d28d9;
+      --accent:#22d3ee;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius-sm:12px;
+    }
+    /* Light mode vars (toggle via .light on body) */
+    body.light{
+      --bg:#ffffff;
+      --card:#f7f7fb;
+      --text:#0b0b0f;
+      --muted:#5a5d6a;
+      --shadow: 0 10px 24px rgba(17,17,17,.08);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 800px at 70% -10%, rgba(139,92,246,.18), transparent 60%) , var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      letter-spacing:.2px;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button{cursor:pointer;border:0}
+
+    /* Layout helpers */
+    .container{max-width:1180px;margin:auto;padding:0 20px}
+    .grid{display:grid;gap:20px}
+    .center{text-align:center}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(180%) blur(10px);
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      border-bottom:1px solid color-mix(in srgb, var(--text) 10%, transparent);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      height:72px;
+    }
+    .logo{
+      display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.1rem;
+    }
+    .bolt{
+      width:28px;height:28px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #a78bfa, #6d28d9);
+      display:grid;place-items:center;color:#fff; box-shadow: var(--shadow);
+      clip-path: polygon(45% 0, 55% 0, 40% 45%, 62% 45%, 30% 100%, 38% 55%, 18% 55%);
+    }
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{padding:10px 12px;border-radius:12px;color:var(--text);opacity:.92}
+    nav a:hover{background: color-mix(in srgb, var(--brand) 20%, transparent)}
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{
+      padding:12px 16px;border-radius:14px;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      color:#fff;font-weight:700; box-shadow: var(--shadow); transition:transform .15s ease;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .ghost{
+      background:transparent;border:1px solid color-mix(in srgb, var(--text) 16%, transparent);
+      color:var(--text);
+    }
+
+    /* Mobile menu */
+    .menu-toggle{display:none;background:transparent;padding:10px;border-radius:12px}
+    @media (max-width:860px){
+      nav{display:none}
+      .menu-toggle{display:block}
+      .mobile{
+        position:fixed; inset:72px 12px auto 12px; background:var(--card); border:1px solid color-mix(in srgb, var(--text) 10%, transparent);
+        border-radius:16px; padding:14px; display:none;
+      }
+      .mobile.open{display:block}
+      .mobile a{display:block;padding:12px;border-radius:10px}
+      .mobile a:hover{background: color-mix(in srgb, var(--brand) 22%, transparent)}
+    }
+
+    /* Hero */
+    .hero{
+      padding:72px 0 40px;
+    }
+    .hero-wrap{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;
+    }
+    .hero h1{
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height:1.15;margin:0 0 10px;font-weight:900;
+      letter-spacing:.4px;
+    }
+    .kicker{color:var(--accent);font-weight:800;letter-spacing:.6px;text-transform:uppercase;font-size:.8rem}
+    .lead{color:var(--muted);font-size:1.05rem;margin-bottom:22px}
+    .hero-card{
+      background: radial-gradient(480px 220px at 80% -40%, rgba(34,211,238,.18), transparent 60%), var(--card);
+      border:1px solid color-mix(in srgb, var(--text) 10%, transparent);
+      border-radius: var(--radius);
+      padding:18px; box-shadow: var(--shadow);
+    }
+    .hero-img{
+      aspect-ratio: 4/3; border-radius:14px; overflow:hidden;
+    }
+
+    /* Badges */
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .badge{
+      font-size:.82rem;padding:8px 12px;border-radius:999px;
+      border:1px solid color-mix(in srgb, var(--text) 14%, transparent);
+      background: color-mix(in srgb, var(--brand) 10%, transparent);
+      color:var(--text)
+    }
+
+    /* Section */
+    section{padding:60px 0}
+    .section-title{
+      font-size: clamp(1.4rem, 3vw, 2rem); margin:0 0 10px; font-weight:900;
+    }
+    .section-sub{color:var(--muted);margin:0 0 24px}
+
+    /* Services */
+    .card{
+      background:var(--card); border:1px solid color-mix(in srgb, var(--text) 10%, transparent);
+      border-radius: var(--radius); padding:20px; box-shadow: var(--shadow); transition:transform .15s ease, border-color .2s ease;
+    }
+    .card:hover{transform:translateY(-2px); border-color: color-mix(in srgb, var(--brand) 40%, transparent)}
+    .icon{
+      width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:white; font-weight:900;
+      box-shadow: var(--shadow); margin-bottom:10px;
+    }
+
+    /* Portfolio */
+    .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+    .chip{
+      padding:8px 12px;border-radius:999px;border:1px solid color-mix(in srgb, var(--text) 14%, transparent);
+      background:transparent; color:var(--text)
+    }
+    .chip.active, .chip:hover{background: color-mix(in srgb, var(--brand) 25%, transparent)}
+    .gallery{grid-template-columns: repeat(3, 1fr)}
+    .work{
+      border-radius:16px; overflow:hidden; position:relative; border:1px solid color-mix(in srgb, var(--text) 10%, transparent);
+      background:var(--card);
+    }
+    .work img{width:100%; height:220px; object-fit:cover}
+    .work .meta{
+      position:absolute; inset:auto 0 0 0; padding:10px 12px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,.7));
+      color:#fff; font-weight:700; display:flex; justify-content:space-between; align-items:end;
+    }
+
+    /* CTA Afiliados */
+    .cta{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:22px; align-items:center;
+      background: radial-gradient(520px 200px at 0% -10%, rgba(139,92,246,.25), transparent 60%), var(--card);
+      border:1px solid color-mix(in srgb, var(--text) 10%, transparent);
+      border-radius: var(--radius); padding:22px; box-shadow: var(--shadow);
+    }
+    .cta ul{margin:10px 0 0 18px}
+    .cta li{margin:6px 0}
+
+    /* Forms */
+    form{display:grid;gap:12px}
+    input, textarea, select{
+      width:100%; padding:12px 14px; border-radius:12px; border:1px solid color-mix(in srgb, var(--text) 16%, transparent);
+      background: color-mix(in srgb, var(--bg) 94%, white 6%); color:var(--text)
+    }
+    label{font-weight:700;font-size:.92rem}
+    .hint{font-size:.86rem;color:var(--muted)}
+    .success{background:#10b98122;border-color:#10b98155}
+    .error{background:#ef444422;border-color:#ef444477}
+
+    /* Footer */
+    footer{
+      border-top:1px solid color-mix(in srgb, var(--text) 10%, transparent);
+      padding:26px 0; color:var(--muted); font-size:.95rem;
+    }
+
+    /* Responsive grids */
+    @media (max-width:1024px){
+      .hero-wrap, .cta{grid-template-columns:1fr}
+      .gallery{grid-template-columns: repeat(2, 1fr)}
+    }
+    @media (max-width:620px){
+      .gallery{grid-template-columns: 1fr}
+      .hero{padding:56px 0 28px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="bolt" aria-hidden="true"></div>
+        <span>VisuCreate</span>
+      </div>
+      <nav aria-label="Primária">
+        <ul>
+          <li><a href="#home">Início</a></li>
+          <li><a href="#portfolio">Portfólio</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#afiliados">Afiliados</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <button id="mode" class="ghost" aria-label="Alternar tema">🌙</button>
+        <a class="btn" href="#afiliados">Quero ser Afiliado</a>
+        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+    <div class="mobile container" id="mobileMenu" aria-label="Menu móvel">
+      <a href="#home">Início</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#afiliados">Afiliados</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <div class="container hero-wrap">
+      <div>
+        <p class="kicker">Design • Social Media • Identidade</p>
+        <h1>Criações <span style="background:linear-gradient(135deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;">visuais</span> que viram conversão.</h1>
+        <p class="lead">Somos a <strong>VisuCreate</strong>. De artes para atletas e marcas a campanhas pra mídia social, a gente entrega peça bonita, rápida e que performa. Simples assim. 🚀</p>
+        <div class="badges">
+          <span class="badge">Entrega em 24–72h</span>
+          <span class="badge">Pacotes mensais</span>
+          <span class="badge">Briefing assistido</span>
+          <span class="badge">Arquivos prontos p/ post</span>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:16px">
+          <a href="#portfolio" class="btn">Ver Portfólio</a>
+          <a href="#contato" class="btn ghost">Falar no WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-img">
+          <!-- TODO: troque pela sua arte. Abaixo um exemplo livre de Unsplash -->
+          <img src="https://images.unsplash.com/photo-1520975682031-ae3e4f096156?q=80&w=1200&auto=format&fit=crop" alt="Banner de destaque VisuCreate">
+        </div>
+        <p class="hint">Exemplo de destaque. Substitua pela sua peça (como a da atleta “Rosa Maria”).</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Portfólio -->
+  <section id="portfolio">
+    <div class="container">
+      <h2 class="section-title">Portfólio</h2>
+      <p class="section-sub">Alguns trabalhos que mostram nossa vibe e qualidade. Use os filtros pra navegar.</p>
+
+      <div class="filters" role="tablist" aria-label="Filtros do portfólio">
+        <button class="chip active" data-filter="all">Tudo</button>
+        <button class="chip" data-filter="esportes">Esportes</button>
+        <button class="chip" data-filter="empresas">Empresas</button>
+        <button class="chip" data-filter="social">Social Media</button>
+        <button class="chip" data-filter="identidade">Identidade Visual</button>
+      </div>
+
+      <div class="grid gallery" id="gallery">
+        <!-- CARD 1 -->
+        <article class="work" data-tags="esportes social">
+          <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop" alt="Arte para atleta — destaque esportivo">
+          <div class="meta">
+            <span>Atleta — Destaque</span><span>Esportes</span>
+          </div>
+        </article>
+
+        <!-- CARD 2 (use a sua arte de Rosa Maria aqui) -->
+        <article class="work" data-tags="esportes">
+          <img src="https://images.unsplash.com/photo-1521417531823-c39d99f163d2?q=80&w=1200&auto=format&fit=crop" alt="Composição vibrante — vôlei">
+          <div class="meta">
+            <span>Composição Vôlei</span><span>Esportes</span>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="work" data-tags="empresas identidade">
+          <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&auto=format&fit=crop" alt="Identidade visual corporativa">
+          <div class="meta">
+            <span>Identidade Corporativa</span><span>Branding</span>
+          </div>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="work" data-tags="social">
+          <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1200&auto=format&fit=crop" alt="Pacote de posts para redes sociais">
+          <div class="meta">
+            <span>Pacote Social Media</span><span>Social</span>
+          </div>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="work" data-tags="empresas social">
+          <img src="https://images.unsplash.com/photo-1529336953121-ad5a0d43d0d2?q=80&w=1200&auto=format&fit=crop" alt="Campanha para lançamento de produto">
+          <div class="meta">
+            <span>Campanha de Lançamento</span><span>Ads</span>
+          </div>
+        </article>
+
+        <!-- CARD 6 -->
+        <article class="work" data-tags="identidade">
+          <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop" alt="Logo e guia de marca">
+          <div class="meta">
+            <span>Logo + Guia</span><span>Identidade</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section id="servicos">
+    <div class="container">
+      <h2 class="section-title">Serviços</h2>
+      <p class="section-sub">Do rascunho ao post final — tudo com padrão VisuCreate.</p>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="card">
+          <div class="icon">A</div>
+          <h3>Artes para Social Media</h3>
+          <p>Carrosséis, Reels covers, posters e thumbnails que seguram o dedo e aumentam o alcance.</p>
+        </div>
+        <div class="card">
+          <div class="icon">B</div>
+          <h3>Identidade Visual</h3>
+          <p>Logo, paleta e tipografia com guia de uso. Pronto para marcas que querem crescer bonito.</p>
+        </div>
+        <div class="card">
+          <div class="icon">C</div>
+          <h3>Campanhas & Ads</h3>
+          <p>Kits completos para tráfego pago com versões e recortes prontos para testes A/B.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Afiliados -->
+  <section id="afiliados">
+    <div class="container">
+      <h2 class="section-title">Seja Afiliado VisuCreate</h2>
+      <p class="section-sub">Indique nossos serviços e ganhe comissão. Rápido de divulgar, fácil de receber. Bora?</p>
+
+      <div class="cta">
+        <div>
+          <h3 style="margin:0 0 8px">Como funciona</h3>
+          <ul>
+            <li>Receba um link personalizado (UTM) para indicar clientes.</li>
+            <li>Comissões de <strong>10% a 25%</strong> por venda confirmada.</li>
+            <li>Materiais prontos: mockups, textos e criativos.</li>
+            <li>Acompanhamento via planilha/CRM compartilhado.</li>
+          </ul>
+          <div class="badges" style="margin-top:12px">
+            <span class="badge">Pagamento mensal</span>
+            <span class="badge">Suporte no WhatsApp</span>
+            <span class="badge">Relatórios de cliques</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <form id="affForm" novalidate>
+            <label>Nome completo
+              <input name="nome" required placeholder="Seu nome" />
+            </label>
+            <label>E-mail
+              <input name="email" type="email" required placeholder="voce@email.com" />
+            </label>
+            <label>Rede principal
+              <select name="rede" required>
+                <option value="">Selecione...</option>
+                <option>Instagram</option>
+                <option>TikTok</option>
+                <option>YouTube</option>
+                <option>WhatsApp</option>
+                <option>Outro</option>
+              </select>
+            </label>
+            <label>Link da rede / @user
+              <input name="perfil" required placeholder="@seudominio" />
+            </label>
+            <label>Mensagem (opcional)
+              <textarea name="msg" rows="3" placeholder="Conte seu público e nicho..."></textarea>
+            </label>
+            <button class="btn" type="submit">Quero participar</button>
+            <p id="affStatus" class="hint"></p>
+            <p class="hint">Ao enviar, você concorda com os termos do programa de afiliados.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato">
+    <div class="container">
+      <h2 class="section-title">Contato</h2>
+      <p class="section-sub">Fechou com a nossa energia? Chama a gente.</p>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <div class="card">
+          <form id="contactForm" novalidate>
+            <label>Nome
+              <input name="nome" required placeholder="Seu nome" />
+            </label>
+            <label>E-mail
+              <input name="email" type="email" required placeholder="voce@email.com" />
+            </label>
+            <label>Mensagem
+              <textarea name="mensagem" rows="4" required placeholder="Como podemos ajudar?"></textarea>
+            </label>
+            <button class="btn" type="submit">Enviar</button>
+            <p id="contactStatus" class="hint"></p>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Atalhos rápidos</h3>
+          <p>WhatsApp: <a href="https://wa.me/5599999999999" target="_blank" rel="noopener">falar agora</a></p>
+          <p>Instagram: <a href="https://instagram.com/visucreate" target="_blank" rel="noopener">@visucreate</a></p>
+          <p>Email: <a href="mailto:contato@visucreate.com">contato@visucreate.com</a></p>
+          <hr style="border:0;border-top:1px solid color-mix(in srgb, var(--text) 10%, transparent);margin:14px 0">
+          <p class="hint">Dica: personalize o link do WhatsApp com mensagem pré-preenchida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+      <span>© <span id="year"></span> VisuCreate. Todos os direitos reservados.</span>
+      <span>Design por VisuCreate — <a href="#afiliados">Programa de Afiliados</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Utilidades =====
+    const $ = (q,ctx=document)=>ctx.querySelector(q);
+    const $$ = (q,ctx=document)=>[...ctx.querySelectorAll(q)];
+
+    // Ano dinâmico
+    $('#year').textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const menuBtn = $('.menu-toggle');
+    const mobile = $('#mobileMenu');
+    menuBtn?.addEventListener('click', ()=> mobile.classList.toggle('open'));
+    mobile?.addEventListener('click', e=>{
+      if(e.target.tagName==='A') mobile.classList.remove('open');
+    });
+
+    // Smooth scroll
+    $$('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if(id.length>1 && $(id)){
+          e.preventDefault();
+          $(id).scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      })
+    });
+// Tema claro/escuro
+    const modeBtn = $('#mode');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    const setTheme = (t)=>{
+      document.body.classList.toggle('light', t==='light');
+      modeBtn.textContent = t==='light' ? '☀️' : '🌙';
+      localStorage.setItem('theme', t);
+    };
+    setTheme(savedTheme ?? (prefersDark ? 'dark' : 'light')); // default adaptativo
+    modeBtn.addEventListener('click', ()=>{
+      const current = document.body.classList.contains('light') ? 'light' : 'dark';
+      setTheme(current==='light' ? 'dark' : 'light');
+    });
+
+    // Filtros do portfólio
+    const gallery = $('#gallery');
+    const chips = $$('.chip');
+    const works = $$('.work', gallery);
+    chips.forEach(ch=>{
+      ch.addEventListener('click', ()=>{
+        chips.forEach(c=>c.classList.remove('active'));
+        ch.classList.add('active');
+        const f = ch.dataset.filter;
+        works.forEach(w=>{
+          const tags = (w.dataset.tags||'').split(' ');
+          const show = f==='all' || tags.includes(f);
+          w.style.display = show ? 'block' : 'none';
+        });
+      });
+    });
+
+    // Formulários (Formspree/EmailJS pronto para plugar)
+    const POST_URL_AFF = "https://formspree.io/f/xxxxabcd"; // TODO: troque pelo seu endpoint
+    const POST_URL_CONTACT = "https://formspree.io/f/yyyywxyz"; // TODO: troque pelo seu endpoint
+
+    const toast = (el, msg, ok=true)=>{
+      el.textContent = msg;
+      el.className = 'hint ' + (ok ? 'success' : 'error');
+      setTimeout(()=>{ el.textContent=''; el.className = 'hint'; }, 5000);
+    };
+
+    $('#affForm')?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const status = $('#affStatus');
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      // Validação simples
+      if(!data.nome || !data.email || !data.perfil || !data.rede){
+        toast(status, 'Preencha os campos obrigatórios.', false); return;
+      }
+      try{
+        const res = await fetch(POST_URL_AFF, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(data)
+        });
+        if(res.ok){
+          toast(status, 'Recebemos seu cadastro! Enviaremos o link de afiliado em breve.');
+          e.target.reset();
+          // Guarda no localStorage para backup local (opcional)
+          const stash = JSON.parse(localStorage.getItem('aff_leads')||'[]');
+          stash.push({...data, ts: Date.now()});
+          localStorage.setItem('aff_leads', JSON.stringify(stash));
+        }else{
+          toast(status, 'Não conseguimos enviar agora. Tente novamente.', false);
+        }
+      }catch(err){
+        toast(status, 'Falha de conexão. Confira sua internet e tente de novo.', false);
+      }
+    });
+
+    $('#contactForm')?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const status = $('#contactStatus');
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      if(!data.nome || !data.email || !data.mensagem){
+        toast(status, 'Preencha nome, e-mail e mensagem.', false); return;
+      }
+      try{
+        const res = await fetch(POST_URL_CONTACT, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(data)
+        });
+        if(res.ok){
+          toast(status, 'Mensagem enviada. Responderemos ainda hoje 🙂');
+          e.target.reset();
+        }else{
+          toast(status, 'Erro ao enviar. Tente novamente.', false);
+        }
+      }catch(err){
+        toast(status, 'Falha de conexão. Tente novamente.', false);
+      }
+    });
+
+    // Copiar link de afiliado (exemplo)
+    function gerarLinkAfiliado(nome='afiliado'){
+      const slug = nome.toLowerCase().trim().replace(/\s+/g,'-').replace(/[^\w-]/g,'');
+      const base = location.origin + location.pathname.replace(/index\.html$/,'');
+      return `${base}?utm_source=afiliado&utm_medium=link&utm_campaign=programa&utm_content=${slug}`;
+    }
+    // Exemplo de uso no console:
+    // console.log(gerarLinkAfiliado('Jazi Top Seller'));
+
+  </script>
+</body>
+</html>
