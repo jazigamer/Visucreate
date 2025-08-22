@@ -361,94 +361,101 @@
     </div>
   </section>
 
-  <!-- Afiliados -->
-  <section id="afiliados">
-    <div class="container">
-      <h2 class="section-title">Seja Afiliado VisuCreate</h2>
-      <p class="section-sub">Indique nossos serviços e ganhe comissão. Rápido de divulgar, fácil de receber. Bora?</p>
+ <!-- Afiliados -->
+<section id="afiliados">
+  <div class="container">
+    <h2 class="section-title">Seja Afiliado VisuCreate</h2>
+    <p class="section-sub">Indique nossos serviços e ganhe comissão. Rápido de divulgar, fácil de receber. Bora?</p>
 
-      <div class="cta">
-        <div>
-          <h3 style="margin:0 0 8px">Como funciona</h3>
-          <ul>
-            <li>Receba um link personalizado (UTM) para indicar clientes.</li>
-            <li>Comissões de <strong>10% a 25%</strong> por venda confirmada.</li>
-            <li>Materiais prontos: mockups, textos e criativos.</li>
-            <li>Acompanhamento via planilha/CRM compartilhado.</li>
-          </ul>
-          <div class="badges" style="margin-top:12px">
-            <span class="badge">Pagamento mensal</span>
-            <span class="badge">Suporte no WhatsApp</span>
-            <span class="badge">Relatórios de cliques</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <form id="affForm" novalidate>
-            <label>Nome completo
-              <input name="nome" required placeholder="Seu nome" />
-            </label>
-            <label>E-mail
-              <input name="email" type="email" required placeholder="voce@email.com" />
-            </label>
-            <label>Rede principal
-              <select name="rede" required>
-                <option value="">Selecione...</option>
-                <option>Instagram</option>
-                <option>TikTok</option>
-                <option>YouTube</option>
-                <option>WhatsApp</option>
-                <option>Outro</option>
-              </select>
-            </label>
-            <label>Link da rede / @user
-              <input name="perfil" required placeholder="@seudominio" />
-            </label>
-            <label>Mensagem (opcional)
-              <textarea name="msg" rows="3" placeholder="Conte seu público e nicho..."></textarea>
-            </label>
-            <button class="btn" type="submit">Quero participar</button>
-            <p id="affStatus" class="hint"></p>
-            <p class="hint">Ao enviar, você concorda com os termos do programa de afiliados.</p>
-          </form>
+    <div class="cta">
+      <div>
+        <h3 style="margin:0 0 8px">Como funciona</h3>
+        <ul>
+          <li>Receba um link personalizado (UTM) para indicar clientes.</li>
+          <li>Comissões de <strong>10% a 25%</strong> por venda confirmada.</li>
+          <li>Materiais prontos: mockups, textos e criativos.</li>
+          <li>Acompanhamento via planilha/CRM compartilhado.</li>
+        </ul>
+        <div class="badges" style="margin-top:12px">
+          <span class="badge">Pagamento mensal</span>
+          <span class="badge">Suporte no WhatsApp</span>
+          <span class="badge">Relatórios de cliques</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Contato -->
-  <section id="contato">
-    <div class="container">
-      <h2 class="section-title">Contato</h2>
-      <p class="section-sub">Fechou com a nossa energia? Chama a gente.</p>
+      <div class="card">
+        <!-- Agora enviando via FormSubmit -->
+        <form action="https://formsubmit.co/visucreate@gmail.com" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://visucreate.netlify.app/obrigado.html">
 
-      <div class="grid" style="grid-template-columns:1fr 1fr">
-        <div class="card">
-          <form id="contactForm" novalidate>
-            <label>Nome
-              <input name="nome" required placeholder="Seu nome" />
-            </label>
-            <label>E-mail
-              <input name="email" type="email" required placeholder="voce@email.com" />
-            </label>
-            <label>Mensagem
-              <textarea name="mensagem" rows="4" required placeholder="Como podemos ajudar?"></textarea>
-            </label>
-            <button class="btn" type="submit">Enviar</button>
-            <p id="contactStatus" class="hint"></p>
-          </form>
-        </div>
-        <div class="card">
-          <h3>Atalhos rápidos</h3>
-          <p>WhatsApp: <a href="https://wa.me/5599999999999" target="_blank" rel="noopener">falar agora</a></p>
-          <p>Instagram: <a href="https://instagram.com/visucreate" target="_blank" rel="noopener">@visucreate</a></p>
-          <p>Email: <a href="mailto:contato@visucreate.com">contato@visucreate.com</a></p>
-          <hr style="border:0;border-top:1px solid color-mix(in srgb, var(--text) 10%, transparent);margin:14px 0">
-          <p class="hint">Dica: personalize o link do WhatsApp com mensagem pré-preenchida.</p>
-        </div>
+          <label>Nome completo
+            <input name="nome" required placeholder="Seu nome" />
+          </label>
+          <label>E-mail
+            <input name="email" type="email" required placeholder="voce@email.com" />
+          </label>
+          <label>Rede principal
+            <select name="rede" required>
+              <option value="">Selecione...</option>
+              <option>Instagram</option>
+              <option>TikTok</option>
+              <option>YouTube</option>
+              <option>WhatsApp</option>
+              <option>Outro</option>
+            </select>
+          </label>
+          <label>Link da rede / @user
+            <input name="perfil" required placeholder="@seudominio" />
+          </label>
+          <label>Mensagem (opcional)
+            <textarea name="msg" rows="3" placeholder="Conte seu público e nicho..."></textarea>
+          </label>
+          <button class="btn" type="submit">Quero participar</button>
+          <p class="hint">Ao enviar, você concorda com os termos do programa de afiliados.</p>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- Contato -->
+<section id="contato">
+  <div class="container">
+    <h2 class="section-title">Contato</h2>
+    <p class="section-sub">Fechou com a nossa energia? Chama a gente.</p>
+
+    <div class="grid" style="grid-template-columns:1fr 1fr">
+      <div class="card">
+        <!-- Agora enviando via FormSubmit -->
+        <form action="https://formsubmit.co/visucreate@gmail.com" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://visucreate.netlify.app/obrigado.html">
+
+          <label>Nome
+            <input name="nome" required placeholder="Seu nome" />
+          </label>
+          <label>E-mail
+            <input name="email" type="email" required placeholder="voce@email.com" />
+          </label>
+          <label>Mensagem
+            <textarea name="mensagem" rows="4" required placeholder="Como podemos ajudar?"></textarea>
+          </label>
+          <button class="btn" type="submit">Enviar</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>Atalhos rápidos</h3>
+        <p>WhatsApp: <a href="https://wa.me/5599999999999" target="_blank" rel="noopener">falar agora</a></p>
+        <p>Instagram: <a href="https://instagram.com/visucreate" target="_blank" rel="noopener">@visucreate</a></p>
+        <p>Email: <a href="mailto:contato@visucreate.com">contato@visucreate.com</a></p>
+        <hr style="border:0;border-top:1px solid color-mix(in srgb, var(--text) 10%, transparent);margin:14px 0">
+        <p class="hint">Dica: personalize o link do WhatsApp com mensagem pré-preenchida.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
