@@ -181,12 +181,36 @@
 
       <div class="card">
         <!-- Agora enviando via FormSubmit -->
-        <form action="https://formsubmit.co/contatovisucreate@gmail.com" method="POST">
-  <input type="text" name="name" placeholder="Seu Nome" required>
-  <input type="email" name="email" placeholder="Seu Email" required>
-  <textarea name="message" placeholder="Sua Mensagem" required></textarea>
-  <button type="submit">Enviar</button>
+       <!-- Formulário Afiliados -->
+<form action="https://formsubmit.co/contatovisucreate@gmail.com" method="POST">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://visucreate.netlify.app/obrigado.html">
+
+  <label>Nome completo
+    <input name="nome" required placeholder="Seu nome" />
+  </label>
+  <label>E-mail
+    <input name="email" type="email" required placeholder="voce@email.com" />
+  </label>
+  <label>Rede principal
+    <select name="rede" required>
+      <option value="">Selecione...</option>
+      <option>Instagram</option>
+      <option>TikTok</option>
+      <option>YouTube</option>
+      <option>WhatsApp</option>
+      <option>Outro</option>
+    </select>
+  </label>
+  <label>Link da rede / @user
+    <input name="perfil" required placeholder="@seudominio" />
+  </label>
+  <label>Mensagem (opcional)
+    <textarea name="msg" rows="3" placeholder="Conte seu público e nicho..."></textarea>
+  </label>
+  <button class="btn" type="submit">Quero participar</button>
 </form>
+
       </div>
     </div>
   </div>
@@ -201,27 +225,29 @@
     <div class="grid" style="grid-template-columns:1fr 1fr">
       <div class="card">
         <!-- Agora enviando via FormSubmit -->
-        <form action="https://formsubmit.co/creatorspace132@gmail.com" method="POST">
+       <!-- Formulário Contato -->
+<form action="https://formsubmit.co/contatovisucreate@gmail.com" method="POST">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://visucreate.netlify.app/obrigado.html">
 
-          <label>Nome
-            <input name="nome" required placeholder="Seu nome" />
-          </label>
-          <label>E-mail
-            <input name="email" type="email" required placeholder="voce@email.com" />
-          </label>
-          <label>Mensagem
-            <textarea name="mensagem" rows="4" required placeholder="Como podemos ajudar?"></textarea>
-          </label>
-          <input type="hidden" name="_honey" style="display:none">
-          <button class="btn" type="submit">Enviar</button>
-        </form>
+  <label>Nome
+    <input name="nome" required placeholder="Seu nome" />
+  </label>
+  <label>E-mail
+    <input name="email" type="email" required placeholder="voce@email.com" />
+  </label>
+  <label>Mensagem
+    <textarea name="mensagem" rows="4" required placeholder="Como podemos ajudar?"></textarea>
+  </label>
+  <button class="btn" type="submit">Enviar</button>
+</form>
       </div>
 
       <div class="card">
         <h3>Atalhos rápidos</h3>
         <p>WhatsApp: <a href="https://wa.me/5599999999999" target="_blank" rel="noopener">falar agora</a></p>
         <p>Instagram: <a href="https://instagram.com/visucreate" target="_blank" rel="noopener">@visucreate</a></p>
-        <p>Email: <a href="mailto:contatovisucreate@gmail.com">contatovisucreate@gmail.com</a>
+        <p>Email: <a href="mailto:contatovisucreate@gmail.com">contatovisucreate@gmail.com</a></p>
         <hr style="border:0;border-top:1px solid color-mix(in srgb, var(--text) 10%, transparent);margin:14px 0">
         <p class="hint">Dica: personalize o link do WhatsApp com mensagem pré-preenchida.</p>
       </div>
@@ -293,10 +319,6 @@
         });
       });
     });
-
-    // Formulários (Formspree/EmailJS pronto para plugar)
-    const POST_URL_AFF = "https://formspree.io/f/xxxxabcd"; // TODO: troque pelo seu endpoint
-    const POST_URL_CONTACT = "https://formspree.io/f/yyyywxyz"; // TODO: troque pelo seu endpoint
 
     const toast = (el, msg, ok=true)=>{
       el.textContent = msg;
